@@ -1,0 +1,16 @@
+{
+    "go.useLanguageServer": true,
+    "go.languageServer.experimentalFeatures": {
+        "format": true
+    },
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "gopls": {
+        "usePlaceholders": true,
+        "completionDocumentation": true
+    }
+}
