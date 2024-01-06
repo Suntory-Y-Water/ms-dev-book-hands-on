@@ -4,12 +4,16 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { typeDefs } from './schema.js';
-import { resolvers } from './resolver.js';
-import { CatalogueDataSource } from './datasource/catalogue.js';
+import { typeDefs } from './schema.js'
+import { resolvers } from './resolver.js'
+import { CatalogueDataSource }  from './datasource/catalogue.js' 
+import { OrderDataSource }  from './datasource/order.js' 
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+
 
 // Expressサーバとの統合
 const app = express();
+
 
 // Expressサーバーへの受信リクエストを処理するhttpServerの設定
 const httpServer = http.createServer(app);
@@ -18,10 +22,11 @@ const httpServer = http.createServer(app);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
 // ApolloServerの起動
-await server.start();
+await server.start()
 
 // サーバーをマウントするパスの指定
 app.use(
@@ -30,15 +35,20 @@ app.use(
   bodyParser.json(),
   expressMiddleware(server, {
     context: async ({ req }) => {
-      return {
-        dataSources: {
-          catalogueApi: new CatalogueDataSource(),
-        },
-      };
-    },
+        return {
+          dataSources: {
+            catalogueApi: new CatalogueDataSource(),
+            orderApi: new OrderDataSource()
+          }
+        }
+      }
   }),
 );
 
-app.listen(4000);
+await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
 
 console.log(`🚀 Server ready at http://localhost:4000/`);
+
+app.get('/health', (req, res) => {
+  res.status(200).send('Okay!');
+});
