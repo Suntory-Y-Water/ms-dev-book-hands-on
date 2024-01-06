@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.2-reliability/catalogue
+        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.3-servicemesh/catalogue
         env:
         - name: DATABASE
           value: "catalogue_user:default_password@tcp(catalogue-db:3306)/booksdb"

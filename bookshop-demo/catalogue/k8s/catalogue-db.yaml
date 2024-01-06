@@ -33,6 +33,6 @@ spec:
     spec:
       containers:
       - name: catalogue-db
-        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.2-reliability/catalogue-db
+        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.3-servicemesh/catalogue-db
         ports:
         - containerPort: 3306

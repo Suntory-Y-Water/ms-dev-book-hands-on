@@ -34,6 +34,6 @@ spec:
     spec:
       containers:
       - name: order-db
-        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.2-reliability/order-db
+        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.3-servicemesh/order-db
         ports:
         - containerPort: 27017

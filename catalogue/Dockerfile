@@ -16,4 +16,3 @@ USER nonroot
 EXPOSE 50051
 
 ENTRYPOINT [ "./main" ]
-
