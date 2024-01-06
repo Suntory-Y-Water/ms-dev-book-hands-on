@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: bff
-        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.3-servicemesh/bff
+        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.4-auth/bff
         env:
         - name: CATALOGUE_CLIENT_URI
           value: "catalogue:50051"

@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.3-servicemesh/frontend
+        image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.4-auth/frontend
         ports:
         - containerPort: 80
         livenessProbe:
